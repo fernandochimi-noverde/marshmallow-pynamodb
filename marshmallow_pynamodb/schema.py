@@ -15,6 +15,7 @@ class ModelOpts(SchemaOpts):
 class ModelMeta(SchemaMeta):
     @classmethod
     def get_declared_fields(mcs, klass, cls_fields, inherited_fields, dict_cls):
+        """Get Declared Fields."""
         declared_fields = super(ModelMeta, mcs).get_declared_fields(
             klass, cls_fields, inherited_fields, dict_cls
         )
@@ -75,6 +76,7 @@ class ModelSchema(with_metaclass(ModelMeta, Schema)):
 
     @post_load
     def hydrate_pynamo_model(self, data, **kwargs):
+        """Hydrate PynamoDB Model."""
         hash_key = data.pop(getattr(self.opts, "hash_key", None), None)
         range_key = data.pop(getattr(self.opts, "range_key", None), None)
 

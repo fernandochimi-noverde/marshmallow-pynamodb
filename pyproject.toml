@@ -28,7 +28,7 @@ exclude = '''
 '''
 
 [tool.poetry]
-name = "marshmallow-pynamodb-fork"
+name = "marshmallow-pynamo-db"
 version = "0.8.1"
 description = "PynamoDB integration with the marshmallow (de)serialization library"
 authors = ["Mathew Marcus <mathewmarcus456@gmail.com>", "Chris Maillefaud <chrismaillefaud@gmail.com>"]

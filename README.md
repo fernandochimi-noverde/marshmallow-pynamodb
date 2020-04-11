@@ -1,10 +1,12 @@
-# Welcome to Marshmallow-DynamoDB
+# Welcome to Marshmallow-Dynamo-DB
 
 [![Build](https://github.com/chrismaille/stela/workflows/tests/badge.svg)](https://github.com/chrismaille/stela/actions)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/stela)](https://www.python.org)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 <a href="https://github.com/psf/black"><img alt="Code style: black"
 src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
+
+### Original Project: https://github.com/mathewmarcus/marshmallow-pynamodb
 
 [PynamoDB](https://pynamodb.readthedocs.io/en/latest/) integration with
 the [marshmallow](https://marshmallow.readthedocs.io/en/latest/)
@@ -13,13 +15,13 @@ the [marshmallow](https://marshmallow.readthedocs.io/en/latest/)
 ###  Installation
 From PyPi:
 ```shell
-  $ pip install marshmallow-pynamodb
+  $ pip install marshmallow-pynamo-db
 ```
 
 From GitHub:
 
 ```shell
-  $ pip install git+https://github.com/mathewmarcus/marshmallow-pynamodb#egg=marshmallow_pynamodb
+  $ pip install git+https://github.com/chrismaille/marshmallow-pynamodb#egg=marshmallow_pynamodb
 ```
 
 ### Declare your models
