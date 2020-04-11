@@ -4,8 +4,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
-      # Not including 3.8 until issue is resolved:
-      # https://github.community/t5/GitHub-Actions/Seg-Faults-with-Python-in-Linux-while-Running-Pytest/td-p/39912
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
         python-version: [3.6, 3.7, 3.8]
@@ -30,6 +28,10 @@ jobs:
       - name: Run CI Tests
         run: |
           make ci
+        env:
+          AWS_DEFAULT_REGION: us-east-1
+          AWS_ACCESS_KEY_ID: 1234
+          AWS_SECRET_ACCESS_KEY: 1234
   publish:
     needs:
       - test
