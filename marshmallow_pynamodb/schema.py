@@ -7,8 +7,8 @@ from six import with_metaclass, iteritems
 
 
 class ModelOpts(SchemaOpts):
-    def __init__(self, meta):
-        SchemaOpts.__init__(self, meta)
+    def __init__(self, meta, **kwargs):
+        SchemaOpts.__init__(self, meta, **kwargs)
         self.model = getattr(meta, 'model', None)
 
 
@@ -58,7 +58,7 @@ class ModelSchema(with_metaclass(ModelMeta, Schema)):
     OPTIONS_CLASS = ModelOpts
 
     @post_load
-    def hydrate_pynamo_model(self, data):
+    def hydrate_pynamo_model(self, data, **kwargs):
         hash_key = data.pop(getattr(self.opts, 'hash_key', None), None)
         range_key = data.pop(getattr(self.opts, 'range_key', None), None)
 

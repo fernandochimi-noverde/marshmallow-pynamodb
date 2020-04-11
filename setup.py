@@ -10,7 +10,7 @@ setup(
     author_email='mathewmarcus456@gmail.com',
     long_description=open('README.rst').read(),
     install_requires=[
-        "marshmallow>=2.15.1",
-        "pynamodb>=2.0.3",
+        "marshmallow>=3.0.0",
+        "pynamodb>=4.0.0",
     ]
 )

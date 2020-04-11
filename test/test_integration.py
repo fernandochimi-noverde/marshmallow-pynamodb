@@ -1,3 +1,6 @@
+import pytest
+from marshmallow import ValidationError
+
 from marshmallow_pynamodb import ModelSchema
 
 from pynamodb.attributes import ListAttribute, MapAttribute, NumberAttribute, UnicodeAttribute, UnicodeSetAttribute, NumberSetAttribute
@@ -29,7 +32,7 @@ class OfficeEmployeeMap(MapAttribute):
 class Office(Model):
     class Meta:
         table_name = 'OfficeModel'
-        host = "http://localhost:{}".format(environ['DOCKER_PORT'])
+        host = "http://localhost:{}".format(environ.get('DOCKER_PORT', 8000))
 
     office_id = NumberAttribute(hash_key=True)
     address = Location()
@@ -72,10 +75,9 @@ class TestValidatedModelSchema(TestCase):
     def test_load(self):
         self.attrs['office_id'] = self.hash_key
 
-        data, errors = OfficeSchema().load(self.attrs)
+        data = OfficeSchema().load(self.attrs)
         
         self.assertTrue(getattr(OfficeSchema, '_declared_fields')['office_id'].required)
-        self.assertDictEqual(errors, {})
 
         self.assertIsInstance(data, Office)
         self.assertEqual(data.attribute_values['office_id'], self.hash_key)
@@ -90,36 +92,37 @@ class TestValidatedModelSchema(TestCase):
     def test_load_fails_dict_level_0(self):
         self.attrs['office_id'] = 'foobar'
 
-        data, errors = OfficeSchema().load(self.attrs)
+        with pytest.raises(ValidationError) as errors:
+            OfficeSchema().load(self.attrs)
 
-        self.assertDictEqual(errors, {'office_id': [u'Not a valid number.']})
+        self.assertDictEqual(errors.value.messages, {'office_id': [u'Not a valid number.']})
 
     def test_load_fails_dict_level_gt_0(self):
         self.attrs['office_id'] = self.hash_key
         self.attrs['employees'][0]['office_location']['latitude'] = 'foobar'
 
-        data, errors = OfficeSchema().load(self.attrs)
+        with pytest.raises(ValidationError) as errors:
+            OfficeSchema().load(self.attrs)
 
-        self.assertDictEqual(errors, {'employees': {0: {'office_location': {'latitude': [u'Not a valid number.']}}}})
+        self.assertDictEqual(errors.value.messages, {'employees': {0: {'office_location': {'latitude': [u'Not a valid number.']}}}})
 
     def test_dump(self):
         model = Office(hash_key=self.hash_key, **self.attrs)
         self.attrs['office_id'] = self.hash_key
 
-        data, errors = OfficeSchema().dump(model)
+        data = OfficeSchema().dump(model)
 
-        self.assertDictEqual(errors, {})
         self.assertDictEqual(data, self.attrs)
 
     def test_save_and_get_dict(self):
         self.maxDiff = None
         self.attrs['office_id'] = self.hash_key
 
-        office = OfficeSchema().load(self.attrs).data
+        office = OfficeSchema().load(self.attrs)
         office.save()
 
         office_model = Office.get(789)
-        office_json = OfficeSchema().dump(office_model).data
+        office_json = OfficeSchema().dump(office_model)
         office_json['departments'].sort()
         self.attrs['departments'].sort()
         
@@ -175,7 +178,7 @@ class TestValidatedModelSchema(TestCase):
             
         )
 
-        office_json = OfficeSchema().dump(office).data
+        office_json = OfficeSchema().dump(office)
         self.assertDictEqual(office_json, self.attrs)
 
     def tearDown(self):
