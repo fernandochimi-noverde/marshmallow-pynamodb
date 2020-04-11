@@ -10,3 +10,6 @@ dist
 requirements.txt
 poetry.lock
 .vscode
+
+.coverage
+.mypy_cache

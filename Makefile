@@ -5,7 +5,7 @@ test:
 	@poetry run pytest -v -x -p no:warnings --cov-report term-missing --cov=./marshmallow_pynamodb
 
 ci:
-	@poetry run pytest --cov=./marshmallow_pynamodb --black --mypy --pydocstyle
+	@poetry run pytest --cov=./marshmallow_pynamodb --black --pydocstyle
 
 format:
 	@poetry run black .
