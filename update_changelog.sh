@@ -28,7 +28,7 @@ else
 	version_level="patch"
 fi
 
-PACKAGE_VERSION=$(poetry version | grep -o -P "(?<=stela )\S+")
+PACKAGE_VERSION=$(poetry version | grep -o -P "(?<=marshmallow-pynamo-db )\S+")
 echo "Current version: ${PACKAGE_VERSION}"
 
 # Determine Bump Rule
@@ -49,7 +49,7 @@ echo "Bump rule: ${version_rule}"
 poetry version "${version_rule}"
 
 # Update Changelog
-PACKAGE_NEW_VERSION=$(poetry version | grep -o -P "(?<=stela )\S+")
+PACKAGE_NEW_VERSION=$(poetry version | grep -o -P "(?<=marshmallow-pynamo-db )\S+")
 echo "New version: ${PACKAGE_NEW_VERSION}"
 auto-changelog -u -v ${PACKAGE_NEW_VERSION}
 
