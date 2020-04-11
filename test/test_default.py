@@ -9,10 +9,10 @@ from marshmallow import fields
 
 
 class User(Model):
-
     class Meta:
         table_name = "UserModel"
-    email = UnicodeAttribute(default='foo@bar.com')
+
+    email = UnicodeAttribute(default="foo@bar.com")
     first_name = UnicodeAttribute(range_key=True)
     last_name = UnicodeAttribute(hash_key=True)
 
@@ -23,4 +23,6 @@ class TestDefault(TestCase):
             class Meta:
                 model = User
 
-        self.assertEqual(getattr(UserSchema, '_declared_fields')['email'].default, 'foo@bar.com')
+        self.assertEqual(
+            getattr(UserSchema, "_declared_fields")["email"].default, "foo@bar.com"
+        )

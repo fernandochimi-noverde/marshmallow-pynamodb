@@ -11,30 +11,34 @@ class PynamoNested(fields.Nested):
 
 class PynamoSet(fields.List):
     def __init__(self, cls_or_instance, **kwargs):
-        self.strict_unique = kwargs.pop('strict_unique', True)
+        self.strict_unique = kwargs.pop("strict_unique", True)
         super(PynamoSet, self).__init__(cls_or_instance, **kwargs)
 
-    def _deserialize(self, value, attr, data):
+    def _deserialize(self, value, attr, data, **kwargs):
         if self.strict_unique:
-            unfiltered_value = super(PynamoSet, self)._deserialize(value, attr, data)
+            unfiltered_value = super(PynamoSet, self)._deserialize(
+                value, attr, data, **kwargs
+            )
             duplicates = dict()
             unique_list = set()
 
             for element in unfiltered_value:
                 if element in unique_list:
-                    duplicates[element] = ['Duplicate element'] 
+                    duplicates[element] = ["Duplicate element"]
                 else:
                     unique_list.add(element)
 
             if duplicates:
                 raise ValidationError(duplicates)
         else:
-            unique_list = set(super(PynamoSet, self)._deserialize(value, attr, data))
-        
+            unique_list = set(
+                super(PynamoSet, self)._deserialize(value, attr, data, **kwargs)
+            )
+
         return unique_list
 
-    def _serialize(self, value, attr, obj):
-        return super(PynamoSet, self)._serialize(value, attr, obj)
+    def _serialize(self, value, attr, obj, **kwargs):
+        return super(PynamoSet, self)._serialize(value, attr, obj, **kwargs)
 
 
 class NumberSet(PynamoSet):
