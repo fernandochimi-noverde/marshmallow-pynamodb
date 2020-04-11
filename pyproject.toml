@@ -30,10 +30,10 @@ exclude = '''
 [tool.poetry]
 name = "marshmallow-pynamo-db"
 version = "0.8.3"
-description = "PynamoDB integration with the marshmallow (de)serialization library"
+description = "PynamoDB integration with the Marshmallow (de)serialization library"
 authors = ["Mathew Marcus <mathewmarcus456@gmail.com>", "Chris Maillefaud <chrismaillefaud@gmail.com>"]
 readme = "README.md"
-repository = "https://github.com/chrismaille/marshmallow-pynamodb-fork"
+repository = "https://github.com/chrismaille/marshmallow-pynamodb"
 license = "MIT"
 packages = [
     { include = "marshmallow_pynamodb" },
