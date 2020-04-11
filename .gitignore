@@ -6,3 +6,7 @@ dist
 .cache
 .tox
 .pytest_cache
+
+requirements.txt
+poetry.lock
+.vscode
