@@ -6,7 +6,7 @@
 <a href="https://github.com/psf/black"><img alt="Code style: black"
 src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 
-### Original Project: https://github.com/mathewmarcus/marshmallow-pynamodb
+> Original Project: https://github.com/mathewmarcus/marshmallow-pynamodb
 
 [PynamoDB](https://pynamodb.readthedocs.io/en/latest/) integration with
 the [marshmallow](https://marshmallow.readthedocs.io/en/latest/)
@@ -64,7 +64,6 @@ user_schema.load({"last_name": "Smith", "first_name": "John"}).data
 
 ### Nested models? No problem
 
-```python
 ```python
 from marshmallow_pynamodb.schema import ModelSchema
 
