@@ -1,7 +1,7 @@
 # Changelog
 
-## 0.8.3 (2020-04-11)
+## 0.8.4 (2020-04-11)
 
-#### Fixes
+#### Docs
 
-* pyproject.toml build config
+* Update Pypi info
