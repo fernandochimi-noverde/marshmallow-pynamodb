@@ -1,4 +1,4 @@
-# Welcome to Marshmallow-Dynamo-DB
+# Welcome to Marshmallow-Pynamo-DB
 
 [![Build](https://github.com/chrismaille/marshmallow-pynamodb/workflows/tests/badge.svg)](https://github.com/chrismaille/marshmallow-pynamodb/actions)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/stela)](https://www.python.org)
@@ -9,7 +9,7 @@ src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 > Original Project: https://github.com/mathewmarcus/marshmallow-pynamodb
 
 [PynamoDB](https://pynamodb.readthedocs.io/en/latest/) integration with
-the [marshmallow](https://marshmallow.readthedocs.io/en/latest/)
+the [Marshmallow](https://marshmallow.readthedocs.io/en/latest/)
 (de)serialization library.
 
 ###  Installation
