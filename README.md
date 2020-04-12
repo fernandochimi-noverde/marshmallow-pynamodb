@@ -55,10 +55,10 @@ user_schema = UserSchema()
 ```python
 user = User(last_name="Smith", first_name="John")
 
-user_schema.dump(user).data
+user_schema.dump(user)
 # {u'first_name': u'John', u'last_name': u'Smith', u'email': None}
 
-user_schema.load({"last_name": "Smith", "first_name": "John"}).data
+user_schema.load({"last_name": "Smith", "first_name": "John"})
 # user<Smith>
 ```
 
