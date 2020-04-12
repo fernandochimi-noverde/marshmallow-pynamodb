@@ -1,7 +1,7 @@
 # Changelog
 
-## 0.9.0 (2020-04-12)
+## 0.9.1 (2020-04-12)
 
-#### New Features
+#### Fixes
 
-* Update version
+* missing variables in tests.yml
