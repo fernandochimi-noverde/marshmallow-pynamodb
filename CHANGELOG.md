@@ -1,7 +1,7 @@
 # Changelog
 
-## 0.8.4 (2020-04-11)
+## 0.9.0 (2020-04-12)
 
-#### Docs
+#### New Features
 
-* Update Pypi info
+* Update version
