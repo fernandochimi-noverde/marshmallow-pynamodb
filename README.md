@@ -1,9 +1,8 @@
 # Welcome to Marshmallow-Pynamo-DB
 
-![PyPI](https://img.shields.io/pypi/v/marshmallow-pynamo-db)
+[![PyPI](https://img.shields.io/pypi/v/marshmallow-pynamo-db)](https://pypi.org/project/marshmallow-pynamo-db/)
 [![Build](https://github.com/chrismaille/marshmallow-pynamodb/workflows/tests/badge.svg)](https://github.com/chrismaille/marshmallow-pynamodb/actions)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/stela)](https://www.python.org)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 <a href="https://github.com/psf/black"><img alt="Code style: black"
 src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 
