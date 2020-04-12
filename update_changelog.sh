@@ -2,7 +2,7 @@
 #!/bin/bash
 
 # Inspect Unreleased Changelog
-UNRELEASE_DATA=$(auto-changelog --stdout)
+UNRELEASE_DATA=$(auto-changelog -u --stdout)
 has_features=false
 breaking_changes=false
 
@@ -51,7 +51,7 @@ poetry version "${version_rule}"
 # Update Changelog
 PACKAGE_NEW_VERSION=$(poetry version | grep -o -P "(?<=marshmallow-pynamo-db )\S+")
 echo "New version: ${PACKAGE_NEW_VERSION}"
-auto-changelog -u -v ${PACKAGE_NEW_VERSION}
+auto-changelog -v ${PACKAGE_NEW_VERSION}
 
 # Commit alterations
 echo "Commiting alterations..."

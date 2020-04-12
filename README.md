@@ -1,5 +1,6 @@
 # Welcome to Marshmallow-Pynamo-DB
 
+![PyPI](https://img.shields.io/pypi/v/marshmallow-pynamo-db)
 [![Build](https://github.com/chrismaille/marshmallow-pynamodb/workflows/tests/badge.svg)](https://github.com/chrismaille/marshmallow-pynamodb/actions)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/stela)](https://www.python.org)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)

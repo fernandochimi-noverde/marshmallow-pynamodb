@@ -13,3 +13,5 @@ poetry.lock
 
 .coverage
 .mypy_cache
+
+venv/
