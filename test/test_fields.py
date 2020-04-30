@@ -1,7 +1,10 @@
+import json
+from base64 import b64encode
+
 from marshmallow import fields
 from marshmallow import missing
 from marshmallow.exceptions import ValidationError
-from marshmallow_pynamodb.fields import PynamoSet, NumberSet, UnicodeSet
+from marshmallow_pynamodb.fields import PynamoSet, NumberSet, UnicodeSet, Binary
 from unittest import TestCase
 from mock import patch, MagicMock
 
@@ -72,3 +75,22 @@ class TestUnicodeSet(TestCase):
         pynamo_set = UnicodeSet(required=True)
 
         mock_UnicodeSet_init.assert_called_once_with(fields.String, required=True)
+
+
+class TestBinary(TestCase):
+    @patch("marshmallow_pynamodb.fields.Binary._serialize")
+    def test_serialize(self, mock_Binary_serialize):
+        value = {"foo": "bar"}
+        pynamo_binary = Binary()
+        pynamo_binary._serialize(value)
+
+        mock_Binary_serialize.assert_called_once_with(value)
+
+    @patch("marshmallow_pynamodb.fields.Binary._deserialize")
+    def test_deserialize(self, mock_Binary_deserialize):
+        value = {"foo": "bar"}
+        binary = bytes(json.dumps(value), encoding="utf-8")
+        pynamo_binary = Binary()
+        pynamo_binary._deserialize(binary)
+
+        mock_Binary_deserialize.assert_called_once_with(binary)
